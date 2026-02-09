@@ -1,30 +1,33 @@
 # Tools and Production Week 1 Task
 
-## 1. Introduction (≈150 words)
 
-- Briefly describe the task you were asked to complete  
-- Explain your reasoning and overall approach  
-- Outline why this task is relevant or important in a professional or technical context  
 
----
+### **Task and Reasoning**
+I want to add a tool which looks at github pushes and then creates documentation through doxygen. My reasoning was that manual documentation slow and unneccessary, leading to wasted developer time during onboarding or feature implementation.
 
-## 2. Implementation (≈200 words)
-
-- Describe the tools, engine, language, or framework used  
-- Explain how you approached the task technically  
-- Reference key systems, files, classes, or functions involved  
-- Briefly describe any challenges and how they were addressed  
+### **Approach**
+I approached this by leveraging **GitHub Actions** as the "watcher" component. Instead of a custom script running on a developer machine, the repository itself triggers the documentation generation whenever code is pushed. This ensures consistency and centralization. The action runs **Doxygen** to parse the codebase and generate HTML, which is then automatically deployed to **GitHub Pages**.
 
 ---
 
-## 3. Outcome (≈150 words)
+### **Technical Implementation**
+The solution uses **GitHub Actions** (yaml workflows), **Doxygen** (documentation generator), and **Graphviz** (for graphing dependencies if needed). The primary language to document is C++ within the Unreal Engine 5.6 framework.
 
-- State what the final result does and how it behaves  
-- Confirm that all task requirements have been met  
-- Provide a link to a short demonstration video  
-- Describe the demonstrated functionality  
+### **Workflow Details**
+I created a workflow file `.github/workflows/doxygen.yml` which defines the automation logic. The workflow:
+1.  **Observes**: Triggers on every `push` event to the `main` branch.
+2.  **Installs**: Sets up an Ubuntu runner and installs the `doxygen` and `graphviz` packages.
+3.  **Executes**: Runs the command `doxygen Doxyfile` to process the source code.
+4.  **Publishes**: Uses the `peaceiris/actions-gh-pages` action to push the generated HTML to the `gh-pages` branch for hosting.
 
-**Demonstration video link:**  
+### **Configuration and UE5 Integration**
+The `Doxyfile` is the central configuration. A key challenge was handling Unreal Engine's specific macros like `UCLASS()`, `UPROPERTY()`, and `UFUNCTION()`. Standard C++ parsers often fail on these. To address this, I configured the `PREDEFINED` section in the `Doxyfile` to treat these macros as empty strings or specific tokens during the pre-processing step (`ENABLE_PREPROCESSING = YES`). This allows Doxygen to correctly identity classes and functions without syntax errors.
+
+---
+
+
+### **Result**
+The final result is a fully automated documentation pipeline. Whenever a developer pushes a change to the repository, the system silently works in the background to build the new documentation site. The output is a navigable HTML website hosting the API reference.
 
 ---
 
@@ -33,12 +36,16 @@
 - List all external sources used (documentation, tutorials, articles, etc.)  
 - Use the universities referencing style
 
+1.  Doxygen. (2023). *Doxygen Manual: Configuration*. Available at: https://www.doxygen.nl/manual/config.html [Accessed 9 Feb. 2026].
+2.  GitHub. (n.d.). *GitHub Actions Documentation*. Available at: https://docs.github.com/en/actions [Accessed 9 Feb. 2026].
+3.  Epic Games. (n.d.). *Unreal Engine 5 Documentation*. Available at: https://docs.unrealengine.com/5.0/en-US/ [Accessed 9 Feb. 2026].
+
 ---
 
-## 5. AI Usage Declaration
 
-- State whether AI tools were used or not  
-- If used, name the tool(s) and describe how they were used  
+### **AI Declaration**
+**Tools: Google Gemini 3 Pro**  
+
 
 ---
 
