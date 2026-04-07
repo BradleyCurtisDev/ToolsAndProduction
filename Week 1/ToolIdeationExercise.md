@@ -1,41 +1,30 @@
-# Project Proposal: Unreal Engine 5 Asset Audit Tool (EUW)
+# Tool Proposal: Unreal Engine 5 Asset Audit Tool
 
-## 1. Project Overview
-The objective is to develop an Editor Utility Widget (EUW) within Unreal Engine 5 that automates the identification of project assets that exceed specific performance thresholds. The tool will specifically target textures with 4K resolutions and assets with excessive disk/memory footprints to ensure project stability and performance.
+## 1. Overview
+
+I want to create a tool that can scan through the project files and find assets that are either too large or unoptimised. The tool will need to find textures that are too large, meshes with an excessive number of triangles.
 
 ## 2. Intended Users
-This tool is designed for integration into a professional collaborative pipeline, specifically targeting:
+The tool would be used by art leads and developers whos task is optimising the game. This could also be used by anyone who has access to the project but ideally it would output a report that could be sent to everyone involved with creating the assets for fast feedback.
 * **Technical Artists:** To establish and enforce technical budgets and performance benchmarks across the project.
-* **Environment & Prop Artists:** To perform self-audits on individual assets before submitting work to source control, preventing "scope creep" in texture memory.
-* **Optimization/QA Leads:** To identify "problem assets" that are causing VRAM bottlenecks or "Out of Video Memory" crashes during the testing phase.
+* **Environment & Prop Artists:** To check assets before using them in the scene to ensure they are up to standard.
+* **Optimization/QA Leads:** To identify problem assets that are causing VRAM bottlenecks or "Out of Video Memory" crashes during the testing phase.
 
 ## 3. Target Platform
-* **Development Environment:** Windows / macOS (Unreal Engine 5 Editor).
-* **Target Deployment:** While the tool runs in-editor, it is critical for optimizing builds for:
-    * **Current-Gen Consoles (PS5/Xbox Series X):** Managing strict VRAM partitions.
-    * **Mobile & VR (Quest 3):** Where texture memory is a primary bottleneck for frame rate stability.
-    * **PC:** Ensuring scalability across various hardware tiers.
+* **Development Environment:** Windows (Unreal Engine 5 Editor).
+* **Target Deployment:** 
+    * **PC:** Making sure the game runs on most hardware not just high end.
 
 ## 4. Key Data & File Formats
-The tool will interface with the Asset Registry to analyze metadata without the overhead of loading every asset into memory.
-* **Primary File Type:** `.uasset` (The standard Unreal Engine asset wrapper).
+The tool will run through the Asset Registry to analyze metadata without the overhead of loading every asset into memory.
+* **Primary File Type:** `.uasset`.
 * **Class Focus:** `Texture2D`, `StaticMesh`.
 * **Monitored Metadata:**
-    * **Dimensions:** Flagging any texture with a resolution of 4096 x 4096 or higher.
-    * **Resource Size:** Identifying assets exceeding a defined threshold in MB.
-    * **LOD Bias / Compression:** Checking for uncompressed formats or missing LOD settings that contribute to unnecessary file bloat.
+    * Finding any texture with a resolution of 4096 x 4096 or higher.
+    *  Identifying assets exceeding a defined threshold in mb.
+    * Checking for missing LOD settings.
+
 
 ## 5. Production Value
-The implementation of this tool provides three major benefits to a game production:
 
-### A. Memory & Performance Management
-A single 4K texture uses approximately 16x the memory of a 1K texture. By automating the detection of these assets, the tool prevents frame rate drops and crashes, ensuring the game stays within the target platform's hardware limitations.
-
-### B. Build Size Optimization
-Modern game installs are increasingly large. This tool identifies "bloated" assets early in the development cycle, allowing for better compression or downscaling. This results in smaller patch sizes and a reduced final installation footprint for the end-user.
-
-### C. Workflow Efficiency (ROI)
-Manually auditing thousands of project files is a high-cost, error-prone task. This widget automates the process, transforming a multi-hour manual search into a near-instantaneous report. This allows the creative team to focus on asset creation rather than technical troubleshooting.
-
-## 6. Technical Implementation Note
-The widget will utilize the Asset Registry Module in Blueprints/C++ to ensure high-speed scanning. By filtering by class and checking registry tags, the tool provides a non-destructive way to monitor project health without interrupting the creative workflow.
+This asset scanner tool will help developers keep the game running smoothly and efficiently. It will also help them keep the game size down, which will make it easier for players to download and install the game. Art leads can use this tool to enforce technical budgets and performance benchmarks across the project. 
