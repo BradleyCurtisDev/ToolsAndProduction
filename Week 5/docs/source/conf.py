@@ -1,5 +1,5 @@
 project = 'UE5 Asset Scanner'
-author = 'bradl'
+author = 'Bradley Curtis'
 release = '1.0'
 
 extensions = []
