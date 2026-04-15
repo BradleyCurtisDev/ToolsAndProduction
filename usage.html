@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage &mdash; UE5 Asset Scanner 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api.html" />
+    <link rel="prev" title="UE5 Asset Scanner" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UE5 Asset Scanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-scanner">Running the Scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-the-visual-report">Generating the Visual Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-call-flow">Example Call Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-thresholds">Configuring Thresholds</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UE5 Asset Scanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
+<section id="running-the-scanner">
+<h2>Running the Scanner<a class="headerlink" href="#running-the-scanner" title="Link to this heading"></a></h2>
+<p>The scanner runs inside the UE5 editor using the Python scripting plugin.</p>
+<ol class="arabic simple">
+<li><p>Place assets into <code class="docutils literal notranslate"><span class="pre">/Game/DropOff</span></code> in the Content Browser.</p></li>
+<li><p>Open the UE5 Output Log and run the script via <strong>File &gt; Execute Python Script</strong>.</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">scan_assets.py</span></code>.</p></li>
+</ol>
+<p>The script will scan all Static Meshes and Texture2D assets found under
+<code class="docutils literal notranslate"><span class="pre">SCAN_PATH</span></code> and print a summary to the Output Log. Two output files are
+written to the same directory as the script:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code> — raw flagged asset data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scan_results.md</span></code> — formatted Markdown report</p></li>
+</ul>
+</section>
+<section id="generating-the-visual-report">
+<h2>Generating the Visual Report<a class="headerlink" href="#generating-the-visual-report" title="Link to this heading"></a></h2>
+<p>After the scan, run <code class="docutils literal notranslate"><span class="pre">generate_report.py</span></code> from outside the editor using
+a standard Python installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>py<span class="w"> </span>generate_report.py
+</pre></div>
+</div>
+<p>The script searches for <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code> from the current working
+directory. You can also pass the path explicitly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>py<span class="w"> </span>generate_report.py<span class="w"> </span><span class="s2">&quot;path/to/folder&quot;</span>
+</pre></div>
+</div>
+<p>This validates the CSV data, generates a <code class="docutils literal notranslate"><span class="pre">scan_results.png</span></code> graph, and
+rebuilds <code class="docutils literal notranslate"><span class="pre">scan_results.md</span></code> with the graph embedded.</p>
+</section>
+<section id="example-call-flow">
+<h2>Example Call Flow<a class="headerlink" href="#example-call-flow" title="Link to this heading"></a></h2>
+<p>The following shows a typical end-to-end scan and report cycle:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[UE5 Editor]
+Execute scan_assets.py
+     |
+     +--&gt; scan_results.csv  (raw flagged data)
+     +--&gt; scan_results.md   (basic report)
+
+[Terminal]
+py generate_report.py
+     |
+     +--&gt; Validates CSV (unit tests)
+     +--&gt; Generates scan_results.png
+     +--&gt; Rebuilds scan_results.md with embedded graphs
+</pre></div>
+</div>
+</section>
+<section id="configuring-thresholds">
+<h2>Configuring Thresholds<a class="headerlink" href="#configuring-thresholds" title="Link to this heading"></a></h2>
+<p>Thresholds are defined as constants at the top of <code class="docutils literal notranslate"><span class="pre">scan_assets.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MAX_TRIANGLES</span>    <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">MAX_TEXTURE_SIZE</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="n">MIN_LODS</span>         <span class="o">=</span> <span class="mi">2</span>
+<span class="n">MAX_ASSET_SIZE_MB</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">SCAN_PATH</span>        <span class="o">=</span> <span class="s2">&quot;/Game/DropOff&quot;</span>
+</pre></div>
+</div>
+<p>Adjust these values to match your project’s requirements before running
+the scan.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="UE5 Asset Scanner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

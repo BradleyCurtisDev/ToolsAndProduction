@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; UE5 Asset Scanner 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UE5 Asset Scanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-assets-py">scan_assets.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scan-meshes">scan_meshes()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scan-textures">scan_textures()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-asset-size-mb-asset-data">get_asset_size_mb(asset_data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-markdown-flagged-assets-script-dir">generate_markdown(flagged_assets, script_dir)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#print-and-export-flagged-assets">print_and_export(flagged_assets)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-report-py">generate_report.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resolve-scan-dir-user-path">resolve_scan_dir(user_path)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-unit-tests-rows">run_unit_tests(rows)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-graph-rows-output-path">generate_graph(rows, output_path)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rebuild-markdown-rows-header-block-png-filename">rebuild_markdown(rows, header_block, png_filename)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UE5 Asset Scanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Link to this heading"></a></h2>
+<p>These values are defined at the top of <code class="docutils literal notranslate"><span class="pre">scan_assets.py</span></code> and control
+what the scanner flags.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 15.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_TRIANGLES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10000</span></code></p></td>
+<td><p>Maximum triangle count allowed for a Static Mesh</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_TEXTURE_SIZE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2048</span></code></p></td>
+<td><p>Maximum width or height in pixels allowed for a Texture2D</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MIN_LODS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>Minimum number of LOD levels required on a Static Mesh</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_ASSET_SIZE_MB</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+<td><p>Maximum file size on disk in MB for any asset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SCAN_PATH</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/Game/DropOff</span></code></p></td>
+<td><p>UE5 content path to scan recursively</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="scan-assets-py">
+<h2>scan_assets.py<a class="headerlink" href="#scan-assets-py" title="Link to this heading"></a></h2>
+<section id="scan-meshes">
+<h3>scan_meshes()<a class="headerlink" href="#scan-meshes" title="Link to this heading"></a></h3>
+<p>Scans all Static Mesh assets found under <code class="docutils literal notranslate"><span class="pre">SCAN_PATH</span></code> and checks them
+against the triangle count, LOD count, and file size thresholds.</p>
+<p><strong>Parameters</strong></p>
+<p>None. Uses the module-level constants.</p>
+<p><strong>Returns</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">list[dict]</span></code> — A list of flagged asset entries. Each dict contains:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;MESH&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;LOD&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;SIZE&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The asset name as it appears in the Content Browser</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The UE5 content path of the asset (e.g. <code class="docutils literal notranslate"><span class="pre">/Game/DropOff/3D</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">issue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Human-readable description of the violation</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Errors</strong></p>
+<ul class="simple">
+<li><p>Returns an empty list if no Static Meshes are found at <code class="docutils literal notranslate"><span class="pre">SCAN_PATH</span></code>.</p></li>
+<li><p>An asset is silently skipped if <code class="docutils literal notranslate"><span class="pre">load_asset</span></code> returns a non-mesh object.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="scan-textures">
+<h3>scan_textures()<a class="headerlink" href="#scan-textures" title="Link to this heading"></a></h3>
+<p>Scans all Texture2D assets found under <code class="docutils literal notranslate"><span class="pre">SCAN_PATH</span></code> and checks them
+against the resolution and file size thresholds.</p>
+<p><strong>Parameters</strong></p>
+<p>None. Uses the module-level constants.</p>
+<p><strong>Returns</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">list[dict]</span></code> — A list of flagged asset entries. Each dict contains:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;TEXTURE&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;SIZE&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The asset name as it appears in the Content Browser</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The UE5 content path of the asset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">issue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Human-readable description of the violation</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Errors</strong></p>
+<ul class="simple">
+<li><p>Returns an empty list if no Texture2D assets are found at <code class="docutils literal notranslate"><span class="pre">SCAN_PATH</span></code>.</p></li>
+<li><p>An asset is silently skipped if <code class="docutils literal notranslate"><span class="pre">load_asset</span></code> returns a non-texture object.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="get-asset-size-mb-asset-data">
+<h3>get_asset_size_mb(asset_data)<a class="headerlink" href="#get-asset-size-mb-asset-data" title="Link to this heading"></a></h3>
+<p>Returns the file size on disk of a UE5 asset by resolving its <code class="docutils literal notranslate"><span class="pre">.uasset</span></code>
+path from the project content directory.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">asset_data</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unreal.AssetData</span></code></p></td>
+<td><p>The asset data object returned by the asset registry</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">|</span> <span class="pre">None</span></code> — File size in MB rounded to 2 decimal places, or
+<code class="docutils literal notranslate"><span class="pre">None</span></code> if the <code class="docutils literal notranslate"><span class="pre">.uasset</span></code> file could not be found on disk.</p>
+</section>
+<hr class="docutils" />
+<section id="generate-markdown-flagged-assets-script-dir">
+<h3>generate_markdown(flagged_assets, script_dir)<a class="headerlink" href="#generate-markdown-flagged-assets-script-dir" title="Link to this heading"></a></h3>
+<p>Generates a Markdown report from the list of flagged assets and writes
+it to <code class="docutils literal notranslate"><span class="pre">scan_results.md</span></code> in the script directory.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flagged_assets</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[dict]</span></code></p></td>
+<td><p>The combined output of <code class="docutils literal notranslate"><span class="pre">scan_meshes()</span></code> and <code class="docutils literal notranslate"><span class="pre">scan_textures()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">script_dir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Absolute path to the directory where the report will be written</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">str</span></code> — The absolute path to the written <code class="docutils literal notranslate"><span class="pre">.md</span></code> file.</p>
+<p><strong>Errors</strong></p>
+<ul class="simple">
+<li><p>Raises <code class="docutils literal notranslate"><span class="pre">OSError</span></code> if the script directory is not writable.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="print-and-export-flagged-assets">
+<h3>print_and_export(flagged_assets)<a class="headerlink" href="#print-and-export-flagged-assets" title="Link to this heading"></a></h3>
+<p>Prints a summary of all flagged assets to the UE5 Output Log, exports
+the results to <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code>, and calls <code class="docutils literal notranslate"><span class="pre">generate_markdown()</span></code>
+to write the Markdown report.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flagged_assets</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[dict]</span></code></p></td>
+<td><p>The combined output of <code class="docutils literal notranslate"><span class="pre">scan_meshes()</span></code> and <code class="docutils literal notranslate"><span class="pre">scan_textures()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>Nothing. Side effects: writes <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">scan_results.md</span></code>
+to the script directory and prints results to the Output Log.</p>
+<p><strong>Errors</strong></p>
+<ul class="simple">
+<li><p>Raises <code class="docutils literal notranslate"><span class="pre">OSError</span></code> if the script directory is not writable.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="generate-report-py">
+<h2>generate_report.py<a class="headerlink" href="#generate-report-py" title="Link to this heading"></a></h2>
+<section id="resolve-scan-dir-user-path">
+<h3>resolve_scan_dir(user_path)<a class="headerlink" href="#resolve-scan-dir-user-path" title="Link to this heading"></a></h3>
+<p>Locates the directory containing <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code>. If no path is
+provided, searches recursively from the current working directory.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
+<td><p>Path to a folder or CSV file, or <code class="docutils literal notranslate"><span class="pre">None</span></code> to trigger auto-search</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">str</span></code> — Absolute path to the directory containing <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code>.</p>
+<p><strong>Errors</strong></p>
+<ul class="simple">
+<li><p>Exits with an error message if the path does not exist.</p></li>
+<li><p>Exits with an error message if no <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code> is found.</p></li>
+<li><p>Exits and lists all matches if multiple <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code> files are found.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="run-unit-tests-rows">
+<h3>run_unit_tests(rows)<a class="headerlink" href="#run-unit-tests-rows" title="Link to this heading"></a></h3>
+<p>Validates the loaded CSV data against a set of structural assertions.
+Checks that the data is well-formed and that every flagged value genuinely
+violates its threshold.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rows</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[dict]</span></code></p></td>
+<td><p>Rows loaded from <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">bool</span></code> — <code class="docutils literal notranslate"><span class="pre">True</span></code> if all assertions pass, <code class="docutils literal notranslate"><span class="pre">False</span></code> if any fail.</p>
+</section>
+<hr class="docutils" />
+<section id="generate-graph-rows-output-path">
+<h3>generate_graph(rows, output_path)<a class="headerlink" href="#generate-graph-rows-output-path" title="Link to this heading"></a></h3>
+<p>Generates a three-chart matplotlib figure from the scan data and saves
+it as a PNG.</p>
+<p>Charts produced:</p>
+<ul class="simple">
+<li><p><strong>Issues by Type</strong> — horizontal bar chart</p></li>
+<li><p><strong>Issues by Type and Folder</strong> — grouped bar chart split by content path</p></li>
+<li><p><strong>File Size Violations</strong> — ranked bar chart of all assets over the size limit</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rows</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[dict]</span></code></p></td>
+<td><p>Rows loaded from <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">output_path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Absolute path where the PNG will be saved</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p>Nothing. Writes a PNG file to <code class="docutils literal notranslate"><span class="pre">output_path</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="rebuild-markdown-rows-header-block-png-filename">
+<h3>rebuild_markdown(rows, header_block, png_filename)<a class="headerlink" href="#rebuild-markdown-rows-header-block-png-filename" title="Link to this heading"></a></h3>
+<p>Reconstructs <code class="docutils literal notranslate"><span class="pre">scan_results.md</span></code> from scratch using the scan data and
+the original header block preserved from the previous scan.</p>
+<p><strong>Parameters</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rows</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[dict]</span></code></p></td>
+<td><p>Rows loaded from <code class="docutils literal notranslate"><span class="pre">scan_results.csv</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">header_block</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The header section extracted from the existing <code class="docutils literal notranslate"><span class="pre">scan_results.md</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">png_filename</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Filename of the graph PNG (used as a relative image reference)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">str</span></code> — The full Markdown content as a string. The caller is responsible
+for writing it to disk.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
