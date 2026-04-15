@@ -10,7 +10,7 @@ Sphinx is a tool that takes text files you write and turns them into a proper lo
 
 ## Setting It Up
 
-First I installed Sphinx and a theme called Read the Docs, which makes the site look professional.
+I installed Sphinx and a theme called Read the Docs, which makes the site look professional.
 
 ```
 py -m pip install sphinx sphinx-rtd-theme
