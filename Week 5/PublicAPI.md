@@ -2,7 +2,7 @@
 
 ## What I Did
 
-For this task I had to write public facing documentation for my asset scanner tool from week 2. I decided to use Sphinx to build the docs and GitHub Pages to host them online, because my lecturer mentioned both of those as good options and they are used a lot in real projects.
+For this task I wanted to create public facing documentation for my asset scanner tool from week 2. I decided to use Sphinx to build the docs and GitHub Pages to host them online.
 
 ## What Sphinx Is
 
@@ -22,28 +22,19 @@ The main files I created were.
 
 - conf.py, which tells Sphinx the project name and which theme to use.
 - index.rst, which is the home page of the docs site.
-- usage.rst, which explains how to run the scanner and the report generator.
+- usage.rst, which explains how to run the scanner and the report generator
 - api.rst, which is the full API reference for every function in both scripts.
 
 ## Writing the Docs
 
 The api.rst file was the main piece of work. For each function I wrote what it does, what parameters it takes, what it returns, and what errors it can produce. I did this for all the functions in scan_assets.py and generate_report.py. Using Sphinx tables made this look a lot cleaner than just writing it in plain Markdown.
 
-## Building It Locally
-
-To build the site and preview it before pushing to GitHub I ran this command.
-
-```
-py -m sphinx "Week 5/docs/source" "Week 5/docs/build/html"
-```
-
-Then I opened the index.html file in my browser to check it looked right.
-
 ## Deploying to GitHub Pages
 
 I created a GitHub Actions workflow file at .github/workflows/docs.yml. This means every time I push to the main branch, GitHub automatically runs Sphinx and publishes the output to GitHub Pages. I do not have to manually build or upload anything, it all happens on its own.
 
 To turn GitHub Pages on I went to the repository settings, found the Pages section, and set the source to the gh-pages branch that Actions publishes to.
+
 
 ## What the End Result Is
 
