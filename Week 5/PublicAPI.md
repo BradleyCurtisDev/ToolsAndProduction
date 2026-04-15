@@ -38,4 +38,6 @@ To turn GitHub Pages on I went to the repository settings, found the Pages secti
 
 ## What the End Result Is
 
+- https://bradleycurtisdev.github.io/ToolsAndProduction/
+
 The docs are hosted as a public website that anyone can visit. It has a sidebar with navigation, a search bar, and all the API reference tables formatted properly. The source files stay in the repository and the built website is handled entirely by GitHub.
