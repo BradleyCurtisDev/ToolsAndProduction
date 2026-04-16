@@ -16,6 +16,14 @@
 | Assets too large on disk | 15 |
 | **Total** | **130** |
 
+---
+
+## Graphs
+
+![Issue Breakdown](scan_results.png)
+
+
+---
 
 ## Triangle Count Issues
 

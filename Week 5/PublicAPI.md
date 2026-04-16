@@ -33,8 +33,6 @@ The api.rst file was the main piece of work. For each function I wrote what it d
 
 I created a GitHub Actions workflow file at .github/workflows/docs.yml. This means every time I push to the main branch, GitHub automatically runs Sphinx and publishes the output to GitHub Pages. I do not have to manually build or upload anything, it all happens on its own.
 
-To turn GitHub Pages on I went to the repository settings, found the Pages section, and set the source to the gh-pages branch that Actions publishes to.
-
 
 ## What the End Result Is
 
