@@ -256,6 +256,8 @@ style: |
 
 <!-- footer:  -->
 
+![bg right:50% width:95%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/2026-04-20%2022-14-29.gif)
+
 # Git and merge management
 
 - I managed the team's Git branches throughout the project, handling merges between several active branches.
@@ -265,7 +267,7 @@ style: |
 
 <!-- footer: (Epic Games, s.d.) -->
 
-![bg right:48% width:100%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Week%206/scan_results.png)
+![bg right:48% width:90%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Week%206/scan_results.png)
 
 # Asset scanner tool
 
@@ -277,7 +279,7 @@ style: |
 ---
 <!-- footer:  -->
 
-![bg right:48% width:100%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Week%206/scan_results.png)
+![bg right:48% width:90%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Week%206/scan_results.png)
 
 # Report generator and graphs
 
@@ -294,8 +296,8 @@ style: |
 
 - I used **Sphinx** to write technical documentation for the asset scanner tool and deployed it using **GitHub Pages**.
 - The docs cover every function in both scripts, including parameters, return types, and error cases.
-- A **GitHub Actions** workflow rebuilds and publishes the site automatically every time I push to main.
-- The live documentation is available at: **bradleycurtisdev.github.io/ToolsAndProduction**
+
+
 
 ---
 
