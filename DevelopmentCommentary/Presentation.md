@@ -308,6 +308,8 @@ style: |
 
 <!-- footer: (Epic Games, s.d.) -->
 
+![bg right:45% width:90%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/BP_DealerOverviewImage.png)
+
 # Multiplayer systems
 
 - I worked on getting both players visible on each other's screens and dealt with the client player not being able to see their own cards.
