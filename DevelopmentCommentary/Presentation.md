@@ -229,7 +229,8 @@ style: |
 
 <!-- footer:  -->
 
-# Tools and Production - Bradley Curtis
+# Tools and Production FGCT5017
+## Bradley Curtis
 
 ---
 
@@ -291,6 +292,8 @@ style: |
 ---
 
 <!-- footer: (Read the Docs, s.d.); (GitHub, s.d.) -->
+
+![bg right:30% width:90%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/AssetScannerQRCode.png)
 
 # Sphinx API documentation
 
