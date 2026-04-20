@@ -270,7 +270,7 @@ style: |
 
 <!-- footer: (Epic Games, s.d.) -->
 
-![bg right:48% width:90%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Week%206/scan_results.png)
+![bg right:45% width:90%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/AssetAuditOutput.gif)
 
 # Asset scanner tool
 
