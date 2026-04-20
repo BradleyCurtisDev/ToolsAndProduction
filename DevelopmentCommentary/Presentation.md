@@ -246,6 +246,8 @@ style: |
 
 <!-- footer:  -->
 
+![bg right:50% width:95%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/InGameScreenshot.png)
+
 # Project coordination
 
 - I worked with the other coordinator to assign tasks to developers based on what was needed at each stage.
