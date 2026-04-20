@@ -303,9 +303,10 @@ style: |
 
 # Multiplayer systems
 
-- My multiplayer work started on **13 March**, getting both players visible on each other's screens.
-- I then worked on getting the dealer to correctly read card submissions from the server side.
+- I worked on getting both players visible on each other's screens and dealt with the client player not being able to see their own cards.
+- I then worked alongside the other multiplayer developers on getting the dealer to correctly read card submissions from the server side.
 - The key blueprints were `BP_Dealer`, `BP_FirstPersonCharacter`, `BPC_PlayCards`, and `GM_Multiplayer`.
+- By the end I had the auditing mechanic working across all players and all input issues resolved.
 
 
 ---
