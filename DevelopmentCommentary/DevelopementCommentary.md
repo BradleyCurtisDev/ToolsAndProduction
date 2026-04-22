@@ -6,7 +6,6 @@
 
 **Student ID:** 2309516
 
-
 **Build Link:** [URL or Embed]
 
 **Video Demonstration Link:** [URL or Embed]
@@ -26,18 +25,20 @@ For this project I worked on Greedy Piggies, a multiplayer card game built in Un
 
 ### What sources or references have you identified as relevant to this task?
 
-When researching how to approach the design and implementation of Greedy Piggies, I looked at existing games that share similarities with our mechanics. These ranged from digital card games to a classic card game that has been around for centuries. Looking at how other games solved similar problems — shops, card hand logic, multiplayer bluffing — helped inform how we thought about our own systems.
+When researching how to approach the design and implementation of Greedy Piggies, I looked at existing games that share similarities with our mechanics. These ranged from digital card games to a classic card game that has been around for centuries. Looking at how other games solved similar problems such as shops, card hand logic, and multiplayer bluffing helped inform how we thought about our own systems.
 
 ---
 
 #### Slay the Spire
 
 ![SlayTheSpireShopScreen](https://interfaceingame.com/wp-content/uploads/slay-the-spire/slay-the-spire-store-1920x1080.jpg)
+
 *Figure 2 - Slay the Spire Shop Screen* (Store - Slay the Spire, s.d.)
 
 Slay the Spire is a roguelike deckbuilder developed by MegaCrit. (Games - Mega Crit Games, s.d.) It is widely regarded as one of the most successful digital card games and is relevant to Greedy Piggies primarily because of how it handles its shop system and card economy. (Slay the Spire Review - IGN, s.d.) In Slay the Spire, players visit a shop between combat encounters where they can spend gold to buy new cards, remove cards from their deck, or purchase relics. This directly parallels the shop mechanic we built into Greedy Piggies, where players can spend resources between rounds to acquire new cards or buffs.
 
 ![SlatTheSpireCombat](https://cdn.mos.cms.futurecdn.net/34pQ4ggkqocbB2W6j3cF2B-650-80.jpg.webp)
+
 *Figure 3 - Slay the Spire Combat* (Kinglink, 2019)
 
 The game also demonstrates how card abilities and combinations can be layered to create depth and replayability. Individual cards in Slay the Spire are straightforward on their own, but they become much more powerful when built around synergies. (Slay the Spire | Complete Beginner’s Guide and Beyond | Silent - Ascension 5 | Act 1, 2025) This influenced how we thought about the card abilities and archetype system in Greedy Piggies, where character archetypes change how certain cards behave and reward players for building around them rather than just playing whatever is available. 
@@ -50,12 +51,14 @@ The game also demonstrates how card abilities and combinations can be layered to
 Balatro is a poker-based roguelike developed by LocalThunk. (Balatro, s.d.) It is directly relevant to Greedy Piggies because it uses the same standard 52-card deck as a foundation and layers additional ability cards on top of it. In Balatro these are called Jokers, and they fundamentally change how scoring works, for example a player might have a Joker that triples the value of flush hands, or one that scores bonus points for every card played of a specific suit. (Jokers, s.d.) This maps closely to how Greedy Piggies uses archetype cards that modify the base rules of play for each character.
 
 ![BalatroGameplay](https://static0.polygonimages.com/wordpress/wp-content/uploads/2024/11/GcrvGTWWYAAJ_b5.jpg?w=1200&h=675&fit=crop)
+
 *Figure 4 - Balatro Gameplay* (Morley, 2024)
 
 
 Balatro also shows how familiar hand rankings, pairs, three of a kind, straights, can be made fresh and interesting by adding modifiers on top of them rather than reinventing the underlying structure. Our scoring logic in `BPC_PlayCards` uses the same hand ranking foundation, calculating multipliers based on whether a player submits a pair or three of a kind, which is the same design approach Balatro takes.
 
 ![BalatroShop](https://static.wikia.nocookie.net/balatrogame/images/0/0f/Screenshot_in_shop.png/revision/latest/scale-to-width-down/1200?cb=20250414054711)
+
 *Figure 5 - Balatro Shop* (Balatro Wiki, 2025)
 
 ---
@@ -63,6 +66,7 @@ Balatro also shows how familiar hand rankings, pairs, three of a kind, straights
 #### Neon White
 
 ![NeonWhiteGameplay](https://www.psu.com/wp/wp-content/uploads/2022/12/Neon-White-Review-1-e1671143257719.jpg)
+
 *Figure 6 - Neon White Gameplay image showing cards in hand* (Diaz, 2022)
 
 Neon White is an action game developed by Angel Matrix where cards are the entire gameplay system. (Neon White - Annapurna Interactive, s.d.) Every card in Neon White serves two purposes: it can be used as a weapon to eliminate enemies, or discarded to activate a movement ability. This discard mechanic is particularly relevant to Greedy Piggies because it shows how choosing not to play a card can be just as meaningful as playing it. In our game, the decision of which cards to submit versus which to hold back has a similar strategic weight.
@@ -78,11 +82,13 @@ Neon White also demonstrates how a card system can feel natural and responsive i
 #### Poker
 
 ![PokerHandRankings](https://blog-contents.com/wp-content/uploads/2023/10/poker-hands-rankings.jpg)
+
 *Figure 8 - Poker Hand Rankings* (Poker Hand Rankings: Complete Guide to Hold’em, Short Deck & Lowball, s.d.)
 
 Poker is the game that Greedy Piggies draws most directly from in terms of structure. It is a centuries-old card game built around hand rankings, bluffing, and reading other players, all of which are central to how Greedy Piggies works. The auditing mechanic in our game where players can call out a bluff and trigger a review of what was actually submitted is a direct digital interpretation of the bluffing and calling mechanic that poker is built on.
 
 ![RealLifePokerGame](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/PokerTableBradley.jpg)
+
 *Figure 9 - Professional Poker Game being played by myself*
 
 Poker also validated our use of standard hand rankings as a scoring foundation. Pairs and three of a kind are poker concepts that most players already understand intuitively, which meant we could build complexity on top of familiar rules rather than having to teach an entirely new system. The longevity of poker as a game also showed that a relatively simple ruleset around hidden information and social deduction can sustain long-term interest when the player interactions are engaging enough.
@@ -118,9 +124,11 @@ MAX_ASSET_SIZE_MB
 ```
 
 ![DropOff2D](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/DropOff2D.png)
+
 *Figure 11 - Screenshot of the 2D DropOff folder in UE5 Editor*
 
 ![DropOff3D](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/DropOff3D.png)
+
 *Figure 12 - Screenshot of the 3D DropOff folder in UE5 Editor*
 
 When the scan finishes it prints a summary to the UE5 Output Log and writes two output files. The first is a CSV containing every flagged asset, and the second is a Markdown report that organises the issues into sections so they are easy to read and share. (csv — CSV File Reading and Writing, s.d.) 
@@ -131,11 +139,13 @@ print_and_export(all_flagged)
 ```
 
 ![LogOutput](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/UE5OutputLog.png)
+
 *Figure 13 - Screenshot of the UE5 Output Log showing the scan results*
 
 I also built a companion script called `generate_report.py` that runs outside the editor. It reads the CSV, validates the data, generates graphs using matplotlib, and rebuilds the Markdown report with those graphs embedded in it. (Using Matplotlib — Matplotlib 3.10.8 documentation, s.d.) This meant the team could get a visual breakdown of the issues at a glance rather than having to read through a table to understand the scale of the problems.
 
 ![Scan Results](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/scan_results.png)
+
 *Figure 14 - Matplotlib graph showing the scan results*
 
 The tool was useful to the team because it gave everyone a shared reference point. Rather than the QA process being informal or inconsistent, there was a script that anyone could run which would produce the same report every time based on the same thresholds. Artists knew what the standards were and could check their own work before submitting, and the QA lead could run the scanner across all submitted assets and have a report ready to review without having to manually inspect everything.
