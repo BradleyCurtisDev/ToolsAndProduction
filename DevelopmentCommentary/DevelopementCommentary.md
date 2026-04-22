@@ -95,7 +95,7 @@ The replication architecture across these blueprints followed a consistent patte
 - `ServerCardSelectionLeft` / `ServerCardSelectionRight` — syncs card scroll input server-side
 - `ServerBluffValue` — sends the declared bluff value to the server
 
-<!-- IMAGE NEEDED: A screenshot of the My Blueprint panel in BP_FirstPersonCharacter_HarryTesting showing the Server RPC functions listed under Functions. This makes the list above tangible and shows the actual blueprint structure. -->
+![ServerExecutedCustomEvents](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/ServerExecutedCustomEvents.png)
 
 Once the server receives one of these RPCs it calls into `BP_Dealer`, which is the authoritative manager of all game state. `BP_Dealer` contains the core game flow events including `StartGame`, `DealCard`, `StartingDeal`, `AddToHands`, `Turn`, `AuditPhase`, `NewAuditPhase`, `AuditInput`, `RefillHand`, `UpdateAllScores`, and `ServerIsAuditing`. Because `BP_Dealer` only executes on the server, game state can only be changed through it, which kept things consistent across all connected clients.
 
