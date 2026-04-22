@@ -20,6 +20,8 @@
 
 ## Overview
 
+![TitleScreen]()
+
 For this project I worked on Greedy Piggies, a multiplayer card game built in Unreal Engine 5. I had three main responsibilities across the project. The first was acting as one of two development project coordinators, where I worked alongside another coordinator to manage the team, assign tasks, and keep development moving. The second was implementing and fixing the multiplayer gameplay systems, which included getting the auditing mechanic working across all players, fixing card submission so it worked correctly on both the server and client, and resolving input issues that were stopping players from being able to interact properly. The third was building a Python asset scanner tool that ran inside the UE5 editor to help the team check their assets met the project's quality standards before they were brought into the game. I also managed the team's Git repository throughout the project, handling merges between branches to make sure nobody lost their work.
 
 ---
@@ -56,12 +58,16 @@ MIN_LODS
 MAX_ASSET_SIZE_MB 
 ```
 
+<!-- IMAGE NEEDED: A screenshot of the /Game/DropOff folder open in the UE5 Content Browser, showing the assets sitting inside it. This shows the actual folder the scanner targets. -->
+
 When the scan finishes it prints a summary to the UE5 Output Log and writes two output files. The first is a CSV containing every flagged asset, and the second is a Markdown report that organises the issues into sections so they are easy to read and share.
 
 ```python
 all_flagged = scan_meshes() + scan_textures()
 print_and_export(all_flagged)
 ```
+
+<!-- IMAGE NEEDED: A screenshot of the UE5 Output Log showing the scan summary being printed — the lines listing how many assets were flagged per category. This proves the script ran inside the editor. -->
 
 I also built a companion script called `generate_report.py` that runs outside the editor. It reads the CSV, validates the data, generates graphs using matplotlib, and rebuilds the Markdown report with those graphs embedded in it. This meant the team could get a visual breakdown of the issues at a glance rather than having to read through a table to understand the scale of the problems.
 
@@ -87,9 +93,13 @@ The replication architecture across these blueprints followed a consistent patte
 - `ServerCardSelectionLeft` / `ServerCardSelectionRight` — syncs card scroll input server-side
 - `ServerBluffValue` — sends the declared bluff value to the server
 
+<!-- IMAGE NEEDED: A screenshot of the My Blueprint panel in BP_FirstPersonCharacter_HarryTesting showing the Server RPC functions listed under Functions. This makes the list above tangible and shows the actual blueprint structure. -->
+
 Once the server receives one of these RPCs it calls into `BP_Dealer`, which is the authoritative manager of all game state. `BP_Dealer` contains the core game flow events including `StartGame`, `DealCard`, `StartingDeal`, `AddToHands`, `Turn`, `AuditPhase`, `NewAuditPhase`, `AuditInput`, `RefillHand`, `UpdateAllScores`, and `ServerIsAuditing`. Because `BP_Dealer` only executes on the server, game state can only be changed through it, which kept things consistent across all connected clients.
 
 ![BP Dealer Overview](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/BP_DealerOverviewImage.png)
+
+<!-- IMAGE NEEDED: A screenshot of the IsLocallyControlled node in the BP_FirstPersonCharacter event graph, ideally with the branch flowing into one of the Server RPC calls. This illustrates the client-side guard that prevents input firing on the wrong pawn. -->
 
 To push results back out to all players, `BPC_PlayCards` uses Multicast events. These included `AuditDecision`, `RemoveAuditWBP`, `CreateDeclareValueWBP`, and `CreateShopWidget`, which handle showing and hiding UI widgets on every player's screen at the right moment. Character archetypes were synced to all clients using a `Multicast_ApplyArchetype` call from `BP_ArchetypeComponent`.
 
@@ -104,6 +114,8 @@ I had the auditing mechanic working across all players and had resolved the inpu
 #### Multiplayer Input Fix
 
 The fix was to replace the Make Literal Text detection with a proper Enhanced Input Action. I added `IA_PlayCard` as a dedicated input action in `BP_FirstPersonCharacter_HarryTesting`, using the same Enhanced Input system already in place for the other actions such as `IA_AuditYes`, `IA_AuditNo`, `IA_ScrollLeft`, `IA_ScrollRight`, and `IA_CallNewCards`. With a proper input action I could create `ServerSubmitCards` as a Server RPC. The input action fires locally on the client and the RPC carries the intent to the server, where `BP_Dealer` handles the actual state change. This meant card submission worked correctly for both the host and any connected client.
+
+<!-- IMAGE NEEDED: A screenshot of the IA_PlayCard input action asset open in the editor, showing it is set up as an Enhanced Input Action. Ideally place it next to or above a screenshot of the ServerSubmitCards RPC node in the event graph so the reader can see how the two connect. -->
 
 ### What creative or technical methods did you try?
 
@@ -120,6 +132,8 @@ The Make Literal Text input issue was the main technical challenge. Because the 
 ### What testing methods did you use?
 
 Testing for the multiplayer systems was done by running sessions directly inside the UE5 editor using the standalone game mode with multiple player windows. To set this up I went to the play settings in the editor toolbar, set the number of players to four, and set the net mode to Play As Listen Server. This launched one window as the server host and three additional windows as clients, all running simultaneously on the same machine. This let me test the full session without needing multiple computers or a dedicated server build.
+
+<!-- IMAGE NEEDED: A screenshot of the UE5 play settings dropdown open in the editor toolbar, showing the Number of Players set to 4 and Net Mode set to Play As Listen Server. This is the exact setup described above and directly supports the explanation. -->
 
 ![In Game Screenshot](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/InGameScreenshot.png)
 
