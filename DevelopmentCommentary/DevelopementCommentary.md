@@ -20,7 +20,7 @@
 
 ## Overview
 
-![TitleScreen]()
+![TitleScreen](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/GreddyPiggiesTitle.png)
 
 For this project I worked on Greedy Piggies, a multiplayer card game built in Unreal Engine 5. I had three main responsibilities across the project. The first was acting as one of two development project coordinators, where I worked alongside another coordinator to manage the team, assign tasks, and keep development moving. The second was implementing and fixing the multiplayer gameplay systems, which included getting the auditing mechanic working across all players, fixing card submission so it worked correctly on both the server and client, and resolving input issues that were stopping players from being able to interact properly. The third was building a Python asset scanner tool that ran inside the UE5 editor to help the team check their assets met the project's quality standards before they were brought into the game. I also managed the team's Git repository throughout the project, handling merges between branches to make sure nobody lost their work.
 
@@ -42,7 +42,7 @@ Alongside another project coordinator I was responsible for managing the team th
 
 Part of this coordination role tied directly into the Git management work. With multiple developers working on different features at the same time across different branches, keeping the repository clean and making sure people weren't going to lose their work when branches were merged was something I focused on throughout the whole project rather than just at the end.
 
-![Git Branches](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/2026-04-20%2022-14-29.gif)
+![Git Branches](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/GitBranches.gif)
 
 #### Asset Scanner Tool
 

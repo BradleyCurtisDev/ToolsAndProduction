@@ -260,7 +260,7 @@ style: |
 
 <!-- footer:  -->
 
-![bg right:50% width:95%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/2026-04-20%2022-14-29.gif)
+![bg right:50% width:95%](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/GitBranches.gif)
 
 # Git and merge management
 
