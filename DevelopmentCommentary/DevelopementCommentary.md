@@ -69,7 +69,7 @@ all_flagged = scan_meshes() + scan_textures()
 print_and_export(all_flagged)
 ```
 
-<!-- IMAGE NEEDED: A screenshot of the UE5 Output Log showing the scan summary being printed — the lines listing how many assets were flagged per category. This proves the script ran inside the editor. -->
+![LogOutput](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/UE5OutputLog.png)
 
 I also built a companion script called `generate_report.py` that runs outside the editor. It reads the CSV, validates the data, generates graphs using matplotlib, and rebuilds the Markdown report with those graphs embedded in it. This meant the team could get a visual breakdown of the issues at a glance rather than having to read through a table to understand the scale of the problems.
 
