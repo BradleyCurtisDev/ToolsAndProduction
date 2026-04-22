@@ -61,7 +61,8 @@ style: |
 
 <!-- footer:  -->
 
-# Tools and production - Keisha Byrne
+# Industry Brief FGCT5007
+# Keisha Byrne
 
 ---
 
@@ -229,7 +230,7 @@ style: |
 
 <!-- footer:  -->
 
-# Tools and Production FGCT5017
+# Industry Brief FGCT5007
 ## Bradley Curtis
 
 ---

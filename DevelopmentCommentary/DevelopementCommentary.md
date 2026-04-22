@@ -1,6 +1,6 @@
 # Greedy Piggies — Development Commentary
 
-**Unit Name:** Tools and Production
+**Unit Name:** Tools and Production FGCT5017
 
 **Student Name:** Bradley Curtis
 
@@ -18,9 +18,9 @@
 
 ---
 
-## Abstract
+## Overview
 
-For this project I worked on Greedy Piggies, a multiplayer card game built in Unreal Engine 5. I had three main responsibilities across the project. The first was acting as one of two project coordinators, where I worked alongside another coordinator to manage the team, assign tasks, and keep development moving. The second was implementing and fixing the multiplayer gameplay systems, which included getting the auditing mechanic working across all players, fixing card submission so it worked correctly on both the server and client, and resolving input issues that were stopping players from being able to interact properly. The third was building a Python asset scanner tool that ran inside the UE5 editor to help the team check their assets met the project's quality standards before they were brought into the game. I also managed the team's Git repository throughout the project, handling merges between branches to make sure nobody lost their work.
+For this project I worked on Greedy Piggies, a multiplayer card game built in Unreal Engine 5. I had three main responsibilities across the project. The first was acting as one of two development project coordinators, where I worked alongside another coordinator to manage the team, assign tasks, and keep development moving. The second was implementing and fixing the multiplayer gameplay systems, which included getting the auditing mechanic working across all players, fixing card submission so it worked correctly on both the server and client, and resolving input issues that were stopping players from being able to interact properly. The third was building a Python asset scanner tool that ran inside the UE5 editor to help the team check their assets met the project's quality standards before they were brought into the game. I also managed the team's Git repository throughout the project, handling merges between branches to make sure nobody lost their work.
 
 ---
 
@@ -40,7 +40,10 @@ Alongside another project coordinator I was responsible for managing the team th
 
 Part of this coordination role tied directly into the Git management work. With multiple developers working on different features at the same time across different branches, keeping the repository clean and making sure people weren't going to lose their work when branches were merged was something I focused on throughout the whole project rather than just at the end.
 
+![Git Branches](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/2026-04-20%2022-14-29.gif)
+
 #### Asset Scanner Tool
+
 
 I built an asset scanner that runs inside the UE5 editor using the Python scripting plugin. The purpose of the tool was to give the team a way to check their assets against a set of agreed quality thresholds before those assets were used in the game. Without something like this it was easy for assets to slip through that were too high poly, missing LODs, had textures that were too large, or had file sizes that would cause problems further down the line.
 
@@ -62,11 +65,15 @@ print_and_export(all_flagged)
 
 I also built a companion script called `generate_report.py` that runs outside the editor. It reads the CSV, validates the data, generates graphs using matplotlib, and rebuilds the Markdown report with those graphs embedded in it. This meant the team could get a visual breakdown of the issues at a glance rather than having to read through a table to understand the scale of the problems.
 
-![Scan Results](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Week%206/scan_results.png)
+![Scan Results](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/scan_results.png)
 
 The tool was useful to the team because it gave everyone a shared reference point. Rather than the QA process being informal or inconsistent, there was a script that anyone could run which would produce the same report every time based on the same thresholds. Artists knew what the standards were and could check their own work before submitting, and the QA lead could run the scanner across all submitted assets and have a report ready to review without having to manually inspect everything.
 
+![Asset Audit Output](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/AssetAuditOutput.gif)
+
 I used Sphinx to create a more in depth technical documentation for the tool which can be found here:  https://bradleycurtisdev.github.io/ToolsAndProduction/index.html
+
+<img src="https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/AssetScannerQRCode.png" alt="AssetScannerQRCode" width="200"/>
 
 #### Multiplayer Systems
 
@@ -82,6 +89,8 @@ The replication architecture across these blueprints followed a consistent patte
 
 Once the server receives one of these RPCs it calls into `BP_Dealer`, which is the authoritative manager of all game state. `BP_Dealer` contains the core game flow events including `StartGame`, `DealCard`, `StartingDeal`, `AddToHands`, `Turn`, `AuditPhase`, `NewAuditPhase`, `AuditInput`, `RefillHand`, `UpdateAllScores`, and `ServerIsAuditing`. Because `BP_Dealer` only executes on the server, game state can only be changed through it, which kept things consistent across all connected clients.
 
+![BP Dealer Overview](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/BP_DealerOverviewImage.png)
+
 To push results back out to all players, `BPC_PlayCards` uses Multicast events. These included `AuditDecision`, `RemoveAuditWBP`, `CreateDeclareValueWBP`, and `CreateShopWidget`, which handle showing and hiding UI widgets on every player's screen at the right moment. Character archetypes were synced to all clients using a `Multicast_ApplyArchetype` call from `BP_ArchetypeComponent`.
 
 `GM_Multiplayer` handled the session side. It fired a `K2_PostLogin` event each time a player joined and used `BP_PlayerState` to assign each player their index. It tracked `TotalPlayers` and `ReadyPlayers` variables and used a `CheckAllPlayersReady` server function to decide when to start the game. `HasAuthority` checks gated any logic that should only run on the server. A `Muticast Join` event from `GS_Multiplayer` notified all clients when a new player connected.
@@ -90,7 +99,7 @@ The first thing I focused on was getting `BP_Dealer` to correctly read card subm
 
 The trickiest problem was getting card submission to work for the client player specifically. The input had originally been checked using a Make Literal Text node to detect the enter key, which works fine locally but cannot be replicated in Unreal's networking model. Because you cannot create a custom event from a Make Literal Text node, clients had no way to trigger the submission. I flagged this in a commit message at the time, noting the system would need a proper rework.
 
-By the 19th of March I had the auditing mechanic working across all players and had resolved the input issues, including a separate bug that was preventing four player sessions from starting correctly.
+I had the auditing mechanic working across all players and had resolved the input issues, including a separate bug that was preventing four player sessions from starting correctly.
 
 #### Multiplayer Input Fix
 
@@ -111,6 +120,8 @@ The Make Literal Text input issue was the main technical challenge. Because the 
 ### What testing methods did you use?
 
 Testing for the multiplayer systems was done by running sessions directly inside the UE5 editor using the standalone game mode with multiple player windows. To set this up I went to the play settings in the editor toolbar, set the number of players to four, and set the net mode to Play As Listen Server. This launched one window as the server host and three additional windows as clients, all running simultaneously on the same machine. This let me test the full session without needing multiple computers or a dedicated server build.
+
+![In Game Screenshot](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/InGameScreenshot.png)
 
 Running it this way meant I could watch all four windows at the same time and see exactly where things were breaking. For example, when the Make Literal Text input bug was present I could see the host submitting cards fine while the client windows showed no response at all, which confirmed the issue was on the client side rather than server side. After fixing `ServerSubmitCards` and switching to the Enhanced Input approach I could verify that card submission triggered correctly in all four windows.
 
