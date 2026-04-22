@@ -58,7 +58,9 @@ MIN_LODS
 MAX_ASSET_SIZE_MB 
 ```
 
-<!-- IMAGE NEEDED: A screenshot of the /Game/DropOff folder open in the UE5 Content Browser, showing the assets sitting inside it. This shows the actual folder the scanner targets. -->
+![DropOff2D](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/DropOff2D.png)
+
+![DropOff3D](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/DropOff3D.png)
 
 When the scan finishes it prints a summary to the UE5 Output Log and writes two output files. The first is a CSV containing every flagged asset, and the second is a Markdown report that organises the issues into sections so they are easy to read and share.
 
