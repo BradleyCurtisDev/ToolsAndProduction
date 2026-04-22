@@ -85,6 +85,8 @@ I used Sphinx to create a more in depth technical documentation for the tool whi
 
 #### Multiplayer Systems
 
+![BP Dealer Overview](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/BP_DealerOverviewImage.png)
+
 My work on the multiplayer side of Greedy Piggies started around the 13th of March. At that point I had got both players showing up on each other's screens, but the client player still couldn't see their own cards. The main blueprints I was working with were `BP_Dealer`, `BP_FirstPersonCharacter_HarryTesting`, `BPC_PlayCards`, and the multiplayer game mode `GM_Multiplayer`.
 
 The replication architecture across these blueprints followed a consistent pattern. All player actions originate from Enhanced Input Actions inside `BP_FirstPersonCharacter_HarryTesting`. These input events are gated behind an `IsLocallyControlled` check so they only fire on the pawn the player actually owns. From there, each action calls a Server RPC which runs exclusively on the server and makes the authoritative change to game state. The Server RPCs I implemented or fixed in `BP_FirstPersonCharacter_HarryTesting` were:
@@ -99,9 +101,7 @@ The replication architecture across these blueprints followed a consistent patte
 
 Once the server receives one of these RPCs it calls into `BP_Dealer`, which is the authoritative manager of all game state. `BP_Dealer` contains the core game flow events including `StartGame`, `DealCard`, `StartingDeal`, `AddToHands`, `Turn`, `AuditPhase`, `NewAuditPhase`, `AuditInput`, `RefillHand`, `UpdateAllScores`, and `ServerIsAuditing`. Because `BP_Dealer` only executes on the server, game state can only be changed through it, which kept things consistent across all connected clients.
 
-![BP Dealer Overview](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/BP_DealerOverviewImage.png)
-
-<!-- IMAGE NEEDED: A screenshot of the IsLocallyControlled node in the BP_FirstPersonCharacter event graph, ideally with the branch flowing into one of the Server RPC calls. This illustrates the client-side guard that prevents input firing on the wrong pawn. -->
+![IsLocallyControlledExample](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/IsLocallyControlledExample.png)
 
 To push results back out to all players, `BPC_PlayCards` uses Multicast events. These included `AuditDecision`, `RemoveAuditWBP`, `CreateDeclareValueWBP`, and `CreateShopWidget`, which handle showing and hiding UI widgets on every player's screen at the right moment. Character archetypes were synced to all clients using a `Multicast_ApplyArchetype` call from `BP_ArchetypeComponent`.
 
@@ -113,11 +113,8 @@ The trickiest problem was getting card submission to work for the client player 
 
 I had the auditing mechanic working across all players and had resolved the input issues, including a separate bug that was preventing four player sessions from starting correctly.
 
-#### Multiplayer Input Fix
 
-The fix was to replace the Make Literal Text detection with a proper Enhanced Input Action. I added `IA_PlayCard` as a dedicated input action in `BP_FirstPersonCharacter_HarryTesting`, using the same Enhanced Input system already in place for the other actions such as `IA_AuditYes`, `IA_AuditNo`, `IA_ScrollLeft`, `IA_ScrollRight`, and `IA_CallNewCards`. With a proper input action I could create `ServerSubmitCards` as a Server RPC. The input action fires locally on the client and the RPC carries the intent to the server, where `BP_Dealer` handles the actual state change. This meant card submission worked correctly for both the host and any connected client.
-
-<!-- IMAGE NEEDED: A screenshot of the IA_PlayCard input action asset open in the editor, showing it is set up as an Enhanced Input Action. Ideally place it next to or above a screenshot of the ServerSubmitCards RPC node in the event graph so the reader can see how the two connect. -->
+![HandValueInputFix](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/CardValueFix.png)
 
 ### What creative or technical methods did you try?
 
