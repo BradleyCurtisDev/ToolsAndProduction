@@ -75,16 +75,15 @@ Neon White also demonstrates how a card system can feel natural and responsive i
 
 #### Poker
 
-<!-- IMAGE NEEDED: A photograph or screenshot showing a poker hand laid out on a table, or a diagram of standard hand rankings. -->
+![PokerHandRankings](https://blog-contents.com/wp-content/uploads/2023/10/poker-hands-rankings.jpg)
 
 Poker is the game that Greedy Piggies draws most directly from in terms of structure. It is a centuries-old card game built around hand rankings, bluffing, and reading other players, all of which are central to how Greedy Piggies works. The auditing mechanic in our game — where players can call out a bluff and trigger a review of what was actually submitted — is a direct digital interpretation of the bluffing and calling mechanic that poker is built on.
 
+![RealLifePokerGame](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/PokerTableBradley.jpg)
+
+
 Poker also validated our use of standard hand rankings as a scoring foundation. Pairs and three of a kind are poker concepts that most players already understand intuitively, which meant we could build complexity on top of familiar rules rather than having to teach an entirely new system. The longevity of poker as a game also showed that a relatively simple ruleset around hidden information and social deduction can sustain long-term interest when the player interactions are engaging enough.
 
-- The bluffing and calling structure maps directly to the submit-and-audit loop in Greedy Piggies.
-- Hand rankings like pairs and three of a kind gave us a scoring foundation that players already recognise.
-- Poker demonstrates that social deduction and hidden information are enough to carry a game with a simple ruleset.
-- Money is a core mechanic which keeps people addicted and can be played by anyone
 ---
 
 ## Implementation
