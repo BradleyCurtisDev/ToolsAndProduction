@@ -30,6 +30,61 @@ For this project I worked on Greedy Piggies, a multiplayer card game built in Un
 
 ### What sources or references have you identified as relevant to this task?
 
+When researching how to approach the design and implementation of Greedy Piggies, I looked at existing games that share similarities with our mechanics. These ranged from digital card games to a classic card game that has been around for centuries. Looking at how other games solved similar problems — shops, card hand logic, multiplayer bluffing — helped inform how we thought about our own systems.
+
+---
+
+#### Slay the Spire
+
+![SlayTheSpireShopScreen](https://interfaceingame.com/wp-content/uploads/slay-the-spire/slay-the-spire-store-1920x1080.jpg)
+
+Slay the Spire is a roguelike deckbuilder developed by MegaCrit. It is widely regarded as one of the most successful digital card games and is relevant to Greedy Piggies primarily because of how it handles its shop system and card economy. In Slay the Spire, players visit a shop between combat encounters where they can spend gold to buy new cards, remove cards from their deck, or purchase relics. This directly parallels the shop mechanic we built into Greedy Piggies, where players can spend resources between rounds to acquire new cards or buffs.
+
+![SlatTheSpireCombat](https://cdn.mos.cms.futurecdn.net/34pQ4ggkqocbB2W6j3cF2B-650-80.jpg.webp)
+
+The game also demonstrates how card abilities and combinations can be layered to create depth and replayability. Individual cards in Slay the Spire are straightforward on their own, but they become much more powerful when built around synergies. This influenced how we thought about the card abilities and archetype system in Greedy Piggies, where character archetypes change how certain cards behave and reward players for building around them rather than just playing whatever is available.
+
+---
+
+#### Balatro
+
+
+Balatro is a poker-based roguelike developed by LocalThunk. It is directly relevant to Greedy Piggies because it uses the same standard 52-card deck as a foundation and layers additional ability cards on top of it. In Balatro these are called Jokers, and they fundamentally change how scoring works, for example a player might have a Joker that triples the value of flush hands, or one that scores bonus points for every card played of a specific suit. This maps closely to how Greedy Piggies uses archetype cards that modify the base rules of play for each character.
+
+![BalatroGameplay](https://static0.polygonimages.com/wordpress/wp-content/uploads/2024/11/GcrvGTWWYAAJ_b5.jpg?w=1200&h=675&fit=crop)
+
+
+Balatro also shows how familiar hand rankings, pairs, three of a kind, straights, can be made fresh and interesting by adding modifiers on top of them rather than reinventing the underlying structure. Our scoring logic in `BPC_PlayCards` uses the same hand ranking foundation, calculating multipliers based on whether a player submits a pair or three of a kind, which is the same design approach Balatro takes.
+
+![BalatroShop](https://static.wikia.nocookie.net/balatrogame/images/0/0f/Screenshot_in_shop.png/revision/latest/scale-to-width-down/1200?cb=20250414054711
+)
+
+---
+
+#### Neon White
+
+![NeonWhiteGameplay](https://www.psu.com/wp/wp-content/uploads/2022/12/Neon-White-Review-1-e1671143257719.jpg)
+
+Neon White is an action game developed by Angel Matrix where cards are the entire gameplay system. Every card in Neon White serves two purposes: it can be used as a weapon to eliminate enemies, or discarded to activate a movement ability. This discard mechanic is particularly relevant to Greedy Piggies because it shows how choosing not to play a card can be just as meaningful as playing it. In our game, the decision of which cards to submit versus which to hold back has a similar strategic weight.
+
+Neon White also demonstrates how a card system can feel natural and responsive in a real-time context. While Greedy Piggies is turn-based rather than real-time, the principle that cards should feel like a direct extension of player intent rather than a menu system was something we thought about when designing how cards are selected and submitted.
+
+![NeonWhiteGameplayGif](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXh5bHBhYWlqb3p6M3ZzdWJ3c2Jma2tlcTNrbHJnaW53cm53eGMzaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jNCRVDSX6cN0HXWoh7/giphy.gif)
+
+---
+
+#### Poker
+
+<!-- IMAGE NEEDED: A photograph or screenshot showing a poker hand laid out on a table, or a diagram of standard hand rankings. -->
+
+Poker is the game that Greedy Piggies draws most directly from in terms of structure. It is a centuries-old card game built around hand rankings, bluffing, and reading other players, all of which are central to how Greedy Piggies works. The auditing mechanic in our game — where players can call out a bluff and trigger a review of what was actually submitted — is a direct digital interpretation of the bluffing and calling mechanic that poker is built on.
+
+Poker also validated our use of standard hand rankings as a scoring foundation. Pairs and three of a kind are poker concepts that most players already understand intuitively, which meant we could build complexity on top of familiar rules rather than having to teach an entirely new system. The longevity of poker as a game also showed that a relatively simple ruleset around hidden information and social deduction can sustain long-term interest when the player interactions are engaging enough.
+
+- The bluffing and calling structure maps directly to the submit-and-audit loop in Greedy Piggies.
+- Hand rankings like pairs and three of a kind gave us a scoring foundation that players already recognise.
+- Poker demonstrates that social deduction and hidden information are enough to carry a game with a simple ruleset.
+- Money is a core mechanic which keeps people addicted and can be played by anyone
 ---
 
 ## Implementation
@@ -132,7 +187,7 @@ The Make Literal Text input issue was the main technical challenge. Because the 
 
 Testing for the multiplayer systems was done by running sessions directly inside the UE5 editor using the standalone game mode with multiple player windows. To set this up I went to the play settings in the editor toolbar, set the number of players to four, and set the net mode to Play As Listen Server. This launched one window as the server host and three additional windows as clients, all running simultaneously on the same machine. This let me test the full session without needing multiple computers or a dedicated server build.
 
-<!-- IMAGE NEEDED: A screenshot of the UE5 play settings dropdown open in the editor toolbar, showing the Number of Players set to 4 and Net Mode set to Play As Listen Server. This is the exact setup described above and directly supports the explanation. -->
+![4GameInstances](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/Running4GameInstances.png)
 
 ![In Game Screenshot](https://raw.githubusercontent.com/BradleyCurtisDev/ToolsAndProduction/refs/heads/main/Images/InGameScreenshot.png)
 
