@@ -239,52 +239,62 @@ The input system for card submission should have been set up with networking in 
 
 ## Bibliography
 
-Morley, G. (2024) Balatro cast a magic spell that made me like math. At: https://www.polygon.com/reviews/24084564/balatro-review-poker-game-deck-building-roguelite/ (Accessed  22/04/2026).
+Morley, G. (2024) Balatro cast a magic spell that made me like math. At: https://www.polygon.com/reviews/24084564/balatro-review-poker-game-deck-building-roguelite/ (Accessed 14/02/2026).
 
-Balatro (s.d.) Balatro: Deck-Building Roguelite. At: https://www.playbalatro.com/ (Accessed  22/04/2026).
+Balatro (s.d.) Balatro: Deck-Building Roguelite. At: https://www.playbalatro.com/ (Accessed 14/02/2026).
 
-csv — CSV File Reading and Writing (s.d.) At: https://docs.python.org/3/library/csv.html (Accessed  22/04/2026).
+csv — CSV File Reading and Writing (s.d.) At: https://docs.python.org/3/library/csv.html (Accessed 28/03/2026).
 
-Fps Platformer GIF by Annapurna Interactive - Find & Share on GIPHY (s.d.) At: https://giphy.com/gifs/annapurnainteractive-speedrunning-speedrunner-neon-white-jNCRVDSX6cN0HXWoh7 (Accessed  22/04/2026).
+Fps Platformer GIF by Annapurna Interactive - Find & Share on GIPHY (s.d.) At: https://giphy.com/gifs/annapurnainteractive-speedrunning-speedrunner-neon-white-jNCRVDSX6cN0HXWoh7 (Accessed 21/02/2026).
 
-Games - Mega Crit Games (s.d.) At: https://www.megacrit.com/games/ (Accessed  22/04/2026).
+Games - Mega Crit Games (s.d.) At: https://www.megacrit.com/games/ (Accessed 13/02/2026).
 
-Greedy Piggies on Steam (s.d.) At: https://store.steampowered.com/app/4463930/Greedy_Piggies/ (Accessed  22/04/2026).
+Greedy Piggies on Steam (s.d.) At: https://store.steampowered.com/app/4463930/Greedy_Piggies/ (Accessed 11/02/2026).
 
-Jokers (s.d.) At: https://balatrogame.fandom.com/wiki/Jokers (Accessed  22/04/2026).
+Jokers (s.d.) At: https://balatrogame.fandom.com/wiki/Jokers (Accessed 17/02/2026).
 
-Neon White - Annapurna Interactive (s.d.) At: https://annapurnainteractive.com/en/games/neon-white (Accessed  22/04/2026).
+Neon White - Annapurna Interactive (s.d.) At: https://annapurnainteractive.com/en/games/neon-white (Accessed 24/02/2026).
 
-Diaz, A. (2022) Neon White isn’t just for ‘freaks,’ it made me into one. At: https://www.polygon.com/23179286/neon-white-first-person-shooter-speedrun-impressions/ (Accessed  22/04/2026).
+Diaz, A. (2022) Neon White isn’t just for ‘freaks,’ it made me into one. At: https://www.polygon.com/23179286/neon-white-first-person-shooter-speedrun-impressions/ (Accessed 22/02/2026).
 
-Neon White Review - IGN (s.d.) At: https://www.ign.com/articles/neon-white-review (Accessed  22/04/2026).
+Neon White Review - IGN (s.d.) At: https://www.ign.com/articles/neon-white-review (Accessed 23/02/2026).
 
-Networking and Multiplayer in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/unreal-engine/networking-and-multiplayer-in-unreal-engine (Accessed  22/04/2026).
+Networking and Multiplayer in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/unreal-engine/networking-and-multiplayer-in-unreal-engine (Accessed 19/03/2026).
 
-Poker Hand Rankings: Complete Guide to Hold’em, Short Deck & Lowball (s.d.) At: https://ggpoker.com/blog/holdem-and-short-deck-and-more-oh-my/ (Accessed  22/04/2026).
+Poker Hand Rankings: Complete Guide to Hold’em, Short Deck & Lowball (s.d.) At: https://ggpoker.com/blog/holdem-and-short-deck-and-more-oh-my/ (Accessed 07/03/2026).
 
-Replication Graph overview and proper replication methods (s.d.) At: https://www.unrealengine.com/tech-blog/replication-graph-overview-and-proper-replication-methods (Accessed  22/04/2026).
+Replication Graph overview and proper replication methods (s.d.) At: https://www.unrealengine.com/tech-blog/replication-graph-overview-and-proper-replication-methods (Accessed 22/03/2026).
 
-Scripting the Unreal Editor Using Python | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/unreal-engine/scripting-the-unreal-editor-using-python (Accessed  22/04/2026).
+Scripting the Unreal Editor Using Python | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/unreal-engine/scripting-the-unreal-editor-using-python (Accessed 05/03/2026).
 
-Kinglink (2019) Slay the Spire – Review – Just one more run… just one more. At: https://kinglink-reviews.com/2019/08/25/slay-the-spire-review/ (Accessed  22/04/2026).
+Kinglink (2019) Slay the Spire – Review – Just one more run… just one more. At: https://kinglink-reviews.com/2019/08/25/slay-the-spire-review/ (Accessed 16/02/2026).
 
-Slay the Spire | Complete Beginner’s Guide and Beyond | Silent - Ascension 5 | Act 1 (2025) Directed by Dr. Incompetent. At: https://www.youtube.com/watch?v=K-FuktUH1Sg (Accessed  22/04/2026).
+Slay the Spire | Complete Beginner’s Guide and Beyond | Silent - Ascension 5 | Act 1 (2025) Directed by Dr. Incompetent. At: https://www.youtube.com/watch?v=K-FuktUH1Sg (Accessed 17/02/2026).
 
-Slay the Spire Review - IGN (s.d.) At: https://www.ign.com/articles/2019/01/25/slay-the-spire-review (Accessed  22/04/2026).
+Slay the Spire Review - IGN (s.d.) At: https://www.ign.com/articles/2019/01/25/slay-the-spire-review (Accessed 15/02/2026).
 
-Sphinx — Sphinx documentation (s.d.) At: https://www.sphinx-doc.org/en/master/ (Accessed  22/04/2026).
+Sphinx — Sphinx documentation (s.d.) At: https://www.sphinx-doc.org/en/master/ (Accessed 01/04/2026).
 
-Store - Slay the Spire (s.d.) At: https://interfaceingame.com/screenshots/slay-the-spire-store/ (Accessed  22/04/2026).
+Store - Slay the Spire (s.d.) At: https://interfaceingame.com/screenshots/slay-the-spire-store/ (Accessed 16/02/2026).
 
-Text Localization in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/unreal-engine/text-localization-in-unreal-engine (Accessed  22/04/2026).
+Text Localization in Unreal Engine | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/unreal-engine/text-localization-in-unreal-engine (Accessed 25/03/2026).
 
-UE5 Optimization | Community tutorial (2025) At: https://dev.epicgames.com/community/learning/tutorials/7K4a/unreal-engine-ue5-optimization (Accessed  22/04/2026).
+UE5 Optimization | Community tutorial (2025) At: https://dev.epicgames.com/community/learning/tutorials/7K4a/unreal-engine-ue5-optimization (Accessed 08/04/2026).
 
-Using Matplotlib — Matplotlib 3.10.8 documentation (s.d.) At: https://matplotlib.org/stable/users/index.html (Accessed  22/04/2026).
+Using Matplotlib — Matplotlib 3.10.8 documentation (s.d.) At: https://matplotlib.org/stable/users/index.html (Accessed 12/03/2026).
 
 
 ---
 
 ## Declared Assets
 
+This document was modified and formatted with the use of:
+
+- Claude Sonnet 4.6 (Claude, s.d.)
+
+Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  22/04/2026).
+
+
+- Google Gemini 3.1 Pro (Google Gemini, s.d.)
+
+At: https://gemini.google.com (Accessed  22/04/2026).
