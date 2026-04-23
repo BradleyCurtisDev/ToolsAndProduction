@@ -144,3 +144,16 @@ lines.append(f"![Issue Breakdown]({png_filename})\n")
 Because both the PNG and the markdown file are saved in the same folder, the relative path just works. When you open the markdown in VS Code or view it on GitHub the graph shows up inline with the rest of the report.
 
 The end result is that you run the UE5 scanner, then run generate_report.py, and you get a single markdown file with the summary table, the embedded graph, and all the detailed issue tables underneath it.
+
+## Declared Assets
+
+This document was modified and formatted with the use of:
+
+- Claude Sonnet 4.6 (Claude, s.d.)
+
+Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  22/04/2026).
+
+
+- Google Gemini 3.1 Pro (Google Gemini, s.d.)
+
+At: https://gemini.google.com (Accessed  22/04/2026).

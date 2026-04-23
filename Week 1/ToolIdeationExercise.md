@@ -28,3 +28,16 @@ The tool will run through the Asset Registry to analyze metadata without the ove
 ## 5. Production Value
 
 This asset scanner tool will help developers keep the game running smoothly and efficiently. It will also help them keep the game size down, which will make it easier for players to download and install the game. Art leads can use this tool to enforce technical budgets and performance benchmarks across the project. 
+
+## Declared Assets
+
+This document was modified and formatted with the use of:
+
+- Claude Sonnet 4.6 (Claude, s.d.)
+
+Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  22/04/2026).
+
+
+- Google Gemini 3.1 Pro (Google Gemini, s.d.)
+
+At: https://gemini.google.com (Accessed  22/04/2026).

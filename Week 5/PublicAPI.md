@@ -39,3 +39,16 @@ I created a GitHub Actions workflow file at .github/workflows/docs.yml. This mea
 - https://bradleycurtisdev.github.io/ToolsAndProduction/
 
 The docs are hosted as a public website that anyone can visit. It has a sidebar with navigation, a search bar, and all the API reference tables formatted properly. The source files stay in the repository and the built website is handled entirely by GitHub.
+
+## Declared Assets
+
+This document was modified and formatted with the use of:
+
+- Claude Sonnet 4.6 (Claude, s.d.)
+
+Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  22/04/2026).
+
+
+- Google Gemini 3.1 Pro (Google Gemini, s.d.)
+
+At: https://gemini.google.com (Accessed  22/04/2026).

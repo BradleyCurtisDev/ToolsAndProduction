@@ -3,9 +3,9 @@
 ## Identified Risks
 
 ### 1. Network Transmission
-The tool currently operates **entirely locally**. It reads from the local UE5 asset registry and writes output files to the same directory as the script. No network calls are made, no data is sent anywhere. In its current form there is no network attack surface.
+The tool currently operates **entirely locally**. It reads from the local UE5 asset registry (Introduction to the Asset Registry and Use Cases | Community tutorial, 2025) and writes output files to the same directory as the script. No network calls are made, no data is sent anywhere. In its current form there is no network attack surface. (Unreal Engine 5, s.d.)
 
-However, the output files (`scan_results.csv`, `scan_results.md`) may be committed to a shared repository (e.g. GitHub), at which point asset metadata, including internal content paths and file sizes can be transmitted and stored externally. This is a low-risk exposure but worth being intentional about.
+However, the output files (`scan_results.csv`, `scan_results.md`) may be committed to a shared repository (e.g. GitHub) (Build software better, together, s.d.), at which point asset metadata, including internal content paths and file sizes can be transmitted and stored externally. This is a low-risk exposure but worth being intentional about.
 
 ### 2. Sensitive Project or Player Data Exposure
 The tool does not touch player data or runtime game state. What it does expose is **internal project structure**:
@@ -14,12 +14,12 @@ The tool does not touch player data or runtime game state. What it does expose i
 - Triangle counts and texture resolutions, which could reveal the fidelity and scope of unreleased content
 - File sizes, which could hint at the scale or complexity of in-development assets
 
-If scan reports are committed to a public or insufficiently access-controlled repository, this metadata could be read by competitors before the game releases.
+If scan reports are committed to a public or insufficiently access-controlled repository, this metadata could be read by competitors before the game releases. (Build software better, together, s.d.)
 
 ### 3. Exploitation and Manipulation
 Because the script runs with full editor privileges inside UE5, a **malicious or tampered version of the script** could cause significant harm. Potential vectors:
 
-- **Script substitution:** If the script lives in a shared network drive or is distributed without integrity checking, an attacker with access could replace it with a version that calls `unreal.EditorAssetLibrary.delete_asset()` or similar destructive functions.
+- **Script substitution:** If the script lives in a shared network drive or is distributed without integrity checking, an attacker with access could replace it with a version that calls `unreal.EditorAssetLibrary.delete_asset()` or similar destructive functions. (Editor Scripting Utilities | Unreal Engine 5.7 Documentation | Epic Developer Community, s.d.)
 - **Path injection via asset names:** Asset names are embedded directly into output strings. If the output is later consumed by another tool (e.g. parsed by a CI pipeline), a crafted asset name containing characters like `;`, `|`, or newlines could cause injection in that downstream system.
 - **Hardcoded scan path:** `SCAN_PATH = "/Game/DropOff"` is hardcoded in the script. If misconfigured or changed to `/Game`, the script would load every asset in the project, which could cause editor instability or be used to get the full asset list.
 
@@ -46,7 +46,7 @@ A compromised version of this script could:
 - Scan result files (`scan_results.csv`, `scan_results.md`) should be added to `.gitignore` if the repository is public, or kept in a private, access-controlled repo.
 - If results need to be shared across a team, store them in a location with role-based access (e.g. a private channel or internal dashboard) rather than a public commit.
 
-### Data Minimisation (GDPR)
+### Data Minimisation (GDPR) (Data protection, s.d.)
 - The tool does not collect or process personal data, so GDPR obligations are minimal. However, if in future the tool is extended to log which team member created or last modified an asset, that constitutes personal data and would require a data retention policy, and the ability to delete records on request.
 
 
@@ -77,5 +77,35 @@ The scan could be triggered automatically as part of a CI/CD pipeline (e.g. GitH
 **For solo use or very small teams**, none of the above is worth the infrastructure overhead. A shared Git repository with protected thresholds in a config file and a manual review process achieves most of the benefits with none of the operational cost.
 
 ### Client–Server Model Assessment
-A client–server model would improve **trust and consistency** in a team context: the server becomes the authoritative source for thresholds and for the official record of scan results, preventing local manipulation. However, it introduces new risks (the server itself must be secured, patched, and backed up) and is only worthwhile if the team has the time and skills to maintain it.
+A client–server model would improve **trust and consistency** in a team context: the server becomes the authoritative source for thresholds and for the official record of scan results, preventing local manipulation (Client-Server Model, s.d.). However, it introduces new risks (the server itself must be secured, patched, and backed up) and is only worthwhile if the team has the time and skills to maintain it.
+
+## Bibliography
+
+Build software better, together (s.d.) At: https://github.com (Accessed  19/02/2026).
+
+Client-Server Model (00:30:23+00:00) At: https://www.geeksforgeeks.org/system-design/client-server-model/ (Accessed  24/02/2026).
+
+Data protection (s.d.) At: https://www.gov.uk/data-protection (Accessed  21/02/2026).
+
+Editor Scripting Utilities | Unreal Engine 5.7 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/unreal-engine/API/PluginIndex/EditorScriptingUtilities (Accessed  17/02/2026).
+
+Introduction to the Asset Registry and Use Cases | Community tutorial (2025) At: https://dev.epicgames.com/community/learning/tutorials/55vO/unreal-engine-introduction-to-the-asset-registry-and-use-cases (Accessed  18/02/2026).
+
+e-h-s (s.d.) Metadata overview - Game Publishing Guide. At: https://learn.microsoft.com/en-us/gaming/game-publishing/concepts/metadata-overview (Accessed  22/02/2026).
+
+Unreal Engine 5 (s.d.) At: https://www.unrealengine.com/unreal-engine-5 (Accessed  17/02/2026).
+
+## Declared Assets
+
+This document was modified and formatted with the use of:
+
+- Claude Sonnet 4.6 (Claude, s.d.)
+
+Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  25/02/2026).
+
+
+- Google Gemini 3.1 Pro (Google Gemini, s.d.)
+
+At: https://gemini.google.com (Accessed  25/02/2026).
+
 
