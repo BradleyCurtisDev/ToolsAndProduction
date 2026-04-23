@@ -112,18 +112,15 @@ The scanned assets themselves are intended for a PC game build, so the threshold
 
 This tool does not involve multiplayer, connected systems, or a live backend, so those sections of the brief are not applicable. The tool is best kept local with version-controlled thresholds and an audit log if team size grows.
 
-## Bibliography
-
-
 ## Declared Assets
 
 This document was modified and formatted with the use of:
 
 - Claude Sonnet 4.6 (Claude, s.d.)
 
-Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  22/04/2026).
+Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  29/03/2026).
 
 
 - Google Gemini 3.1 Pro (Google Gemini, s.d.)
 
-At: https://gemini.google.com (Accessed  22/04/2026).
+At: https://gemini.google.com (Accessed  29/03/2026).
