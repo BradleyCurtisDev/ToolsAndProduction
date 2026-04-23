@@ -8,7 +8,6 @@
 
 **Build Link:** [URL or Embed]
 
-**Video Demonstration Link:** [URL or Embed]
 
 ---
 
