@@ -34,7 +34,7 @@ py generate_report.py "path/to/folder"
 
 ## Testing the Data
 
-Before doing anything with the data I wanted to check it was actually valid. I wrote a set of tests that run every time the script is executed. They check things like whether all the rows have the right columns, whether the SIZE values actually parse to a number, and whether all the triangle counts are genuinely over 10,000.
+Before doing anything with the data I wanted to check it was actually valid. I wrote a set of tests that run every time the script is executed. They check things like whether all the rows have the right columns, whether the SIZE values actually parse to a number, and whether all the triangle counts are genuinely over 10,000. 
 
 ```python
 size_rows = [r for r in rows if r["type"] == "SIZE"]
@@ -46,7 +46,7 @@ if size_rows:
           "All parsed SIZE values exceed the 1.0 MB limit")
 ```
 
-The parse_size_mb function uses a regex to pull the number out of strings like "1.39 MB on disk (limit: 1.0 MB)".
+The parse_size_mb function uses a regex to pull the number out of strings like "1.39 MB on disk (limit: 1.0 MB)". (string — Common string operations, s.d.)
 
 ```python
 def parse_size_mb(issue: str) -> float | None:
@@ -60,7 +60,7 @@ When you run the script you see each test pass or fail in the terminal which mak
 
 ## Making the Graphs
 
-I used matplotlib to create a figure with three charts all in one image. The layout is handled by GridSpec which lets you arrange charts in a grid and have some take up more space than others.
+I used matplotlib (Matplotlib — Visualization with Python, s.d.) to create a figure with three charts all in one image. The layout is handled by GridSpec which lets you arrange charts in a grid and have some take up more space than others.
 
 ```python
 fig = plt.figure(figsize=(13, 9))
@@ -71,7 +71,7 @@ This creates a 2x2 grid. The first two charts each take one cell in the top row,
 
 ### Chart 1 - Issues by Type
 
-A horizontal bar chart showing how many of each issue type was found. MESH, LOD, SIZE, and TEXTURE each get their own bar with a colour assigned to them.
+A horizontal bar chart showing how many of each issue type was found. MESH, LOD, SIZE, and TEXTURE each get their own bar with a colour assigned to them. (Matplotlib Pyplot, s.d.)
 
 ```python
 ax1 = fig.add_subplot(gs[0, 0])
@@ -82,7 +82,7 @@ ax1.bar_label(bars, padding=3, fontsize=9)
 
 ### Chart 2 - Issues by Folder
 
-A grouped bar chart that splits the same data by which content folder the asset was in, so you can see whether the problems are coming from the 2D or 3D folder.
+A grouped bar chart that splits the same data by which content folder the asset was in, so you can see whether the problems are coming from the 2D or 3D folder. (Matplotlib Pyplot, s.d.)
 
 ```python
 for fi, (folder, label) in enumerate(zip(folders, folder_labels)):
@@ -114,7 +114,7 @@ plt.savefig(output_path, dpi=150, bbox_inches="tight")
 plt.close()
 ```
 
-I used plt.close() after saving so the window doesnt pop up and block the script from finishing.
+I used plt.close() after saving so the window doesnt pop up and block the script from finishing. (Matplotlib Pyplot, s.d.)
 
 ---
 
@@ -145,15 +145,35 @@ Because both the PNG and the markdown file are saved in the same folder, the rel
 
 The end result is that you run the UE5 scanner, then run generate_report.py, and you get a single markdown file with the summary table, the embedded graph, and all the detailed issue tables underneath it.
 
+## Bibliography
+
+bar(x, height) — Matplotlib 3.10.8 documentation (s.d.) At: https://matplotlib.org/stable/plot_types/basic/bar.html (Accessed  16/03/2026).
+
+Learn Matplotlib in 30 Minutes - Python Matplotlib Tutorial (2026) Directed by Tech With Tim. At: https://www.youtube.com/watch?v=7Lc2AxiM17o (Accessed  23/03/2026).
+
+
+Matplotlib — Visualization with Python (s.d.) At: https://matplotlib.org/ (Accessed  23/03/2026).
+
+Matplotlib Pyplot (s.d.) At: https://www.w3schools.com/python/matplotlib_pyplot.asp (Accessed  23/03/2026).
+
+Matplotlib Tutorial : Matplotlib Full Course (2020) Directed by Derek Banas. At: https://www.youtube.com/watch?v=wB9C0Mz9gSo (Accessed  20/03/2026).
+
+Python os.walk() (s.d.) At: https://www.w3schools.com/python/ref_os_walk.asp (Accessed  16/03/2026).
+
+Start using Matplotlib in 7 minutes! 📊 (2025) Directed by Bro Code. At: https://www.youtube.com/watch?v=2KY5AaFvWtE (Accessed  23/03/2026).
+
+string — Common string operations (s.d.) At: https://docs.python.org/3/library/string.html (Accessed  18/03/2026).
+
+
 ## Declared Assets
 
 This document was modified and formatted with the use of:
 
 - Claude Sonnet 4.6 (Claude, s.d.)
 
-Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  22/04/2026).
+Claude (s.d.) At: https://claude.ai/login?from=logout (Accessed  21/03/2026).
 
 
 - Google Gemini 3.1 Pro (Google Gemini, s.d.)
 
-At: https://gemini.google.com (Accessed  22/04/2026).
+At: https://gemini.google.com (Accessed  21/03/2026).
