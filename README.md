@@ -37,6 +37,7 @@ This repository contains all weekly tasks, the development commentary, the prese
 | [Week 2](Week%202/) | `scan_assets.py` (UE5 editor Python script) and CSV output |
 | [Week 6](Week%206/) | `generate_report.py` (standalone report generator) and graph output |
 
+https://bradleycurtisdev.github.io/ToolsAndProduction/
 ---
 
 ## Project Overview
